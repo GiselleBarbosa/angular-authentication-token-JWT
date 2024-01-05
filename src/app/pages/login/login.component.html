@@ -1,1 +1,42 @@
-<p>login works!</p>
+<app-banner
+  src="assets/imagens/banner-login.png"
+  alt="banner da tela de login"
+/>
+
+<section class="login-component">
+  <mat-card class="login">
+    <div class="image-container">
+      <figure>
+        <img
+          src="assets/imagens/simbolo-bussola.png"
+          alt="Símbolo de uma bussola laranja"
+        />
+      </figure>
+    </div>
+    <div class="form-container">
+      <mat-card-header>
+        <mat-card-title>Login</mat-card-title>
+      </mat-card-header>
+
+      <form>
+        <mat-card-content>
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" placeholder="Digite seu email" />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Senha</mat-label>
+            <input matInput type="password" placeholder="Digite sua senha" />
+          </mat-form-field>
+          <mat-card-actions align="start">
+            <button mat-flat-button color="primary">ACESSAR MINHA CONTA</button>
+          </mat-card-actions>
+          <p>Ainda não possui uma conta?
+            <a><strong>Clique aqui para se cadastrar</strong></a>
+          </p>
+        </mat-card-content>
+      </form>
+    </div>
+  </mat-card>
+</section>
