@@ -6,6 +6,7 @@ import { FormularioService } from 'src/app/core/services/formulario.service';
 import { PessoaUsuaria } from 'src/app/core/types/type';
 import { Router } from '@angular/router';
 import { TokenService } from './../../core/services/token.service';
+import { UserService } from './../../core/services/user.service';
 
 @Component({
   selector: 'app-perfil',
@@ -16,6 +17,7 @@ export class PerfilComponent implements OnInit {
   private tokenService = inject(TokenService);
   private cadastroService = inject(CadastroService);
   private formularioService = inject(FormularioService);
+  private userService = inject(UserService);
   private router = inject(Router);
 
   public titulo = 'Olá, ';
@@ -78,6 +80,7 @@ export class PerfilComponent implements OnInit {
   }
 
   public deslogar() {
-    console.log('deslogar');
+    this.userService.logout();
+    this.router.navigate(['/login']);
   }
 }
