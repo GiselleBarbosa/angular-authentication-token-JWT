@@ -36,7 +36,8 @@ export class FormBaseComponent implements OnInit {
   @Input() public titulo = 'Crie sua conta';
   @Input() public textoBotao = 'CADASTRAR';
 
-  @Output() public acaoClique = new EventEmitter();
+  @Output() public confirmarEvento = new EventEmitter();
+  @Output() public deslogarEvento = new EventEmitter();
 
   public ngOnInit() {
     this.cadastroForm = this.formBuilder.group({
@@ -65,7 +66,7 @@ export class FormBaseComponent implements OnInit {
           FormValidations.equalTo('senha'),
         ],
       ],
-      aceitarTermos: [null, Validators.requiredTrue],
+      aceitarTermos: [null, Validators.required],
     });
 
     if (this.perfilComponent) {
@@ -73,14 +74,19 @@ export class FormBaseComponent implements OnInit {
     } else {
       this.cadastroForm
         .get('aceitarTermos')
-        ?.setValidators(Validators.requiredTrue);
+        ?.setValidators(Validators.required);
     }
 
     this.cadastroForm.get('aceitarTermos')?.updateValueAndValidity();
+
     this.formularioService.setCadastro(this.cadastroForm);
   }
 
-  public executarAcao() {
-    this.acaoClique.emit();
+  public confirmarClickEvent() {
+    this.confirmarEvento.emit();
+  }
+
+  public deslogarClickEvent() {
+    this.deslogarEvento.emit();
   }
 }

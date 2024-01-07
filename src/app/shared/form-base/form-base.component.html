@@ -1,11 +1,15 @@
 <app-container>
   <mat-card>
-    <form [formGroup]="cadastroForm" (ngSubmit)="executarAcao()">
+    <form [formGroup]="cadastroForm">
       <mat-card-title> {{ titulo }} </mat-card-title>
       <section>
         <div class="acoesPerfil" *ngIf="perfilComponent">
           <h2>Dados pessoais</h2>
-          <button mat-stroked-button color="primary">
+          <button
+            mat-stroked-button
+            color="primary"
+            (click)="deslogarClickEvent()"
+          >
             <mat-icon>logout</mat-icon>
             DESLOGAR
           </button>
@@ -195,6 +199,7 @@
       </mat-card-content>
       <mat-card-actions class="full-width">
         <button
+          (click)="confirmarClickEvent()"
           [class.perfil-button]="perfilComponent"
           type="submit"
           mat-flat-button

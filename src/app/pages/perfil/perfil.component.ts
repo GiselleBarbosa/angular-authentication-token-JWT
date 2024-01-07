@@ -9,4 +9,12 @@ export class PerfilComponent {
   public titulo = 'Olá, usuário!';
   public textoBotao = 'ATUALIZAR';
   public perfilComponent = true;
+
+  deslogar() {
+    console.log('deslogar');
+  }
+
+  atualizar() {
+    console.log('atualizar');
+  }
 }
