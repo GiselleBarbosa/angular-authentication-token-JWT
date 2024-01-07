@@ -4,7 +4,7 @@
 />
 
 <section class="login-component">
-  <mat-card class="login">
+  <mat-card class="login shadow-5" >
     <div class="image-container">
       <figure>
         <img
@@ -18,21 +18,34 @@
         <mat-card-title>Login</mat-card-title>
       </mat-card-header>
 
-      <form>
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
         <mat-card-content>
           <mat-form-field appearance="outline">
             <mat-label>Email</mat-label>
-            <input matInput type="email" placeholder="Digite seu email" />
+            <input
+              formControlName="email"
+              matInput
+              type="email"
+              placeholder="Digite seu email"
+            />
           </mat-form-field>
 
           <mat-form-field appearance="outline">
             <mat-label>Senha</mat-label>
-            <input matInput type="password" placeholder="Digite sua senha" />
+            <input
+              formControlName="senha"
+              matInput
+              type="password"
+              placeholder="Digite sua senha"
+            />
           </mat-form-field>
-          <mat-card-actions align="start">
-            <button mat-flat-button color="primary">ACESSAR MINHA CONTA</button>
+          <mat-card-actions>
+            <button type="submit" mat-flat-button color="primary">
+              ACESSAR MINHA CONTA
+            </button>
           </mat-card-actions>
-          <p>Ainda não possui uma conta?
+          <p>
+            Ainda não possui uma conta?
             <a><strong>Clique aqui para se cadastrar</strong></a>
           </p>
         </mat-card-content>

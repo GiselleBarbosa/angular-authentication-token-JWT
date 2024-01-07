@@ -5,19 +5,20 @@ import { LoginComponent } from './pages/login/login.component';
 import { NgModule } from '@angular/core';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+
   {
-    path: '',
-    component: HomeComponent
-  }
-  ,
+    path: 'home',
+    component: HomeComponent,
+  },
   {
     path: 'login',
-    component: LoginComponent
-  }
+    component: LoginComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

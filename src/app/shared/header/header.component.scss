@@ -1,5 +1,9 @@
 .app-header {
 
+  .cursor-pointer {
+    cursor: pointer;
+  }
+
   button {
     margin: 0 16px;
   }
@@ -18,4 +22,3 @@
     border-color: white;
   }
 }
-
