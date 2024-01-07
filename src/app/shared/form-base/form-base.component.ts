@@ -41,8 +41,8 @@ export class FormBaseComponent implements OnInit {
   public ngOnInit() {
     this.cadastroForm = this.formBuilder.group({
       nome: [null, Validators.required],
-      nascimento: [null, [Validators.required]],
-      cpf: [null, [Validators.required]],
+      nascimento: [null, Validators.required],
+      cpf: [null, Validators.required],
       cidade: [null, Validators.required],
       email: [null, [Validators.required, Validators.email]],
       senha: [null, [Validators.required, Validators.minLength(3)]],
@@ -65,9 +65,18 @@ export class FormBaseComponent implements OnInit {
           FormValidations.equalTo('senha'),
         ],
       ],
-      aceitarTermos: [null, [Validators.requiredTrue]],
+      aceitarTermos: [null, Validators.requiredTrue],
     });
 
+    if (this.perfilComponent) {
+      this.cadastroForm.get('aceitarTermos')?.setValidators(null);
+    } else {
+      this.cadastroForm
+        .get('aceitarTermos')
+        ?.setValidators(Validators.requiredTrue);
+    }
+
+    this.cadastroForm.get('aceitarTermos')?.updateValueAndValidity();
     this.formularioService.setCadastro(this.cadastroForm);
   }
 
