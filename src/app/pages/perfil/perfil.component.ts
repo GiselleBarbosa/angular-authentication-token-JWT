@@ -4,6 +4,7 @@ import { CadastroService } from 'src/app/core/services/cadastro.service';
 import { FormGroup } from '@angular/forms';
 import { FormularioService } from 'src/app/core/services/formulario.service';
 import { PessoaUsuaria } from 'src/app/core/types/type';
+import { Router } from '@angular/router';
 import { TokenService } from './../../core/services/token.service';
 
 @Component({
@@ -15,6 +16,7 @@ export class PerfilComponent implements OnInit {
   private tokenService = inject(TokenService);
   private cadastroService = inject(CadastroService);
   private formularioService = inject(FormularioService);
+  private router = inject(Router);
 
   public titulo = 'Olá, ';
   public textoBotao = 'ATUALIZAR';
@@ -34,7 +36,7 @@ export class PerfilComponent implements OnInit {
     });
   }
 
-  public carregarFormulario() {
+  public carregarFormulario(): void {
     this.form = this.formularioService.getCadastro();
     this.form?.patchValue({
       nome: this.cadastro.nome,
@@ -49,11 +51,33 @@ export class PerfilComponent implements OnInit {
     });
   }
 
-  public deslogar() {
-    console.log('deslogar');
+  public atualizar(): void {
+    const dadosAtualizados = {
+      nome: this.form?.value.nome,
+      nascimento: this.form?.value.nascimento,
+      cpf: this.form?.value.cpf,
+      telefone: this.form?.value.telefone,
+      email: this.form?.value.email,
+      senha: this.form?.value.senha,
+      genero: this.form?.value.genero,
+      cidade: this.form?.value.cidade,
+      estado: this.form?.value.estado,
+    };
+
+    this.cadastroService
+      .editarCadastro(dadosAtualizados, this.token)
+      .subscribe({
+        next: (value) => {
+          alert('Editado com sucesso');
+          this.router.navigate(['/']);
+        },
+        error: (error) => {
+          console.log('Erro ao atualizar cadastro', error);
+        },
+      });
   }
 
-  public atualizar() {
-    console.log('atualizar');
+  public deslogar() {
+    console.log('deslogar');
   }
 }
