@@ -4,7 +4,7 @@
 />
 
 <section class="login-component">
-  <mat-card class="login shadow-5" >
+  <mat-card class="login shadow-5">
     <div class="image-container">
       <figure>
         <img
@@ -28,6 +28,12 @@
               type="email"
               placeholder="Digite seu email"
             />
+            <mat-error *ngIf="loginForm.get('email')?.errors?.['required']"
+              >Email obrigátorio</mat-error
+            >
+            <mat-error *ngIf="loginForm.get('email')?.errors?.['email']"
+              >Email inválido</mat-error
+            >
           </mat-form-field>
 
           <mat-form-field appearance="outline">
@@ -38,10 +44,18 @@
               type="password"
               placeholder="Digite sua senha"
             />
+            <mat-error *ngIf="loginForm.get('senha')?.errors?.['required']"
+              >Senha é obrigátoria</mat-error
+            >
           </mat-form-field>
           <mat-card-actions>
-            <button type="submit" mat-flat-button color="primary">
-              ACESSAR MINHA CONTA
+            <button
+              [disabled]="loginForm.invalid"
+              type="submit"
+              mat-flat-button
+              color="primary"
+            >
+              Acessar minha conta
             </button>
           </mat-card-actions>
           <p>
