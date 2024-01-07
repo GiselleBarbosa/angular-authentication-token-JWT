@@ -1,6 +1,8 @@
 import { Component, inject } from '@angular/core';
 
+import { CadastroService } from 'src/app/core/services/cadastro.service';
 import { FormularioService } from './../../core/services/formulario.service';
+import { PessoaUsuaria } from 'src/app/core/types/type';
 
 @Component({
   selector: 'app-cadastro',
@@ -9,11 +11,23 @@ import { FormularioService } from './../../core/services/formulario.service';
 })
 export class CadastroComponent {
   private formularioService = inject(FormularioService);
+  private cadastroService = inject(CadastroService);
   public perfilComponent = false;
 
   public cadastrar() {
     const formCadastro = this.formularioService.getCadastro();
 
-    console.log('Cadastrado com sucesso', formCadastro);
+    if (formCadastro?.valid) {
+      const novoCadastro = formCadastro.getRawValue() as PessoaUsuaria;
+      console.log(novoCadastro);
+      this.cadastroService.cadastrar(novoCadastro).subscribe({
+        next: (value) => {
+          console.log('Cadastrado com sucesso', value);
+        },
+        error: (error) => {
+          console.log('Erro ao realizar cadastro', error);
+        },
+      });
+    }
   }
 }
