@@ -14,9 +14,7 @@ export class CadastroComponent {
   private formularioService = inject(FormularioService);
   private cadastroService = inject(CadastroService);
   private router = inject(Router);
-
-  public perfilComponent = false;
-
+  
   public cadastrar() {
     const formCadastro = this.formularioService.getCadastro();
 

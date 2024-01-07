@@ -32,7 +32,10 @@ export class FormBaseComponent implements OnInit {
     Validators.required
   );
 
-  @Input() public perfilComponent!: boolean;
+  @Input() public perfilComponent = false;
+  @Input() public titulo = 'Crie sua conta';
+  @Input() public textoBotao = 'CADASTRAR';
+
   @Output() public acaoClique = new EventEmitter();
 
   public ngOnInit() {
