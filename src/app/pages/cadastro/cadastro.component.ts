@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+
+import { FormularioService } from './../../core/services/formulario.service';
 
 @Component({
   selector: 'app-cadastro',
@@ -6,9 +8,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./cadastro.component.scss'],
 })
 export class CadastroComponent {
+  private formularioService = inject(FormularioService);
   public perfilComponent = false;
 
-  public cadastrar(){
-    console.log('cadastrado com sucesso');
+  public cadastrar() {
+    const formCadastro = this.formularioService.getCadastro();
+
+    console.log('Cadastrado com sucesso', formCadastro);
   }
 }
