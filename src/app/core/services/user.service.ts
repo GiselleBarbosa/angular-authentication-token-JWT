@@ -25,10 +25,6 @@ export class UserService {
     this.userSubject.next(user);
   }
 
-  /*  public retornarUsuario(): Observable<PessoaUsuaria | null> {
-    return this.userSubject.asObservable();
-  } */
-
   public salvarToken(token: string) {
     this.tokenService.salvarToken(token);
     this.decodificarJWT();
