@@ -11,6 +11,7 @@ import jwt_decode from 'jwt-decode';
 export class UserService {
   private tokenService = inject(TokenService);
   private userSubject = new BehaviorSubject<PessoaUsuaria | null>(null);
+  
   public readonly user$ = this.userSubject.asObservable();
 
   constructor() {

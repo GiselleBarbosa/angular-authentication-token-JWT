@@ -3,6 +3,7 @@ import { Component, inject } from '@angular/core';
 import { CadastroService } from 'src/app/core/services/cadastro.service';
 import { FormularioService } from './../../core/services/formulario.service';
 import { PessoaUsuaria } from 'src/app/core/types/type';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro',
@@ -12,6 +13,8 @@ import { PessoaUsuaria } from 'src/app/core/types/type';
 export class CadastroComponent {
   private formularioService = inject(FormularioService);
   private cadastroService = inject(CadastroService);
+  private router = inject(Router);
+
   public perfilComponent = false;
 
   public cadastrar() {
@@ -22,7 +25,8 @@ export class CadastroComponent {
       console.log(novoCadastro);
       this.cadastroService.cadastrar(novoCadastro).subscribe({
         next: (value) => {
-          console.log('Cadastrado com sucesso', value);
+          alert('Cadastro realizado com sucesso!!!');
+          this.router.navigateByUrl('/login');
         },
         error: (error) => {
           console.log('Erro ao realizar cadastro', error);

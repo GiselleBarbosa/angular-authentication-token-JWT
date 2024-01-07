@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
 
     this.AutenticacaoService.autenticar(email, senha).subscribe({
       next: (value) => {
-        console.log('Login realizado com sucesso.', value);
+          alert('Login realizado com sucesso!!!');
         this.router.navigateByUrl('home');
       },
       error: (error) => {
