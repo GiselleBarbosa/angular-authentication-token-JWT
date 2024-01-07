@@ -13,6 +13,7 @@ import {
   Validators,
 } from '@angular/forms';
 
+import { FormValidations } from 'src/app/core/validators/form-validations';
 import { FormularioService } from 'src/app/core/services/formulario.service';
 import { UnidadeFederativa } from 'src/app/core/types/type';
 
@@ -45,8 +46,22 @@ export class FormBaseComponent implements OnInit {
       genero: ['outro'],
       telefone: [null, Validators.required],
       estado: this.estadoControl,
-      confirmarEmail: [null, [Validators.required, Validators.email]],
-      confirmarSenha: [null, [Validators.required, Validators.minLength(3)]],
+      confirmarEmail: [
+        null,
+        [
+          Validators.required,
+          Validators.email,
+          FormValidations.equalTo('email'),
+        ],
+      ],
+      confirmarSenha: [
+        null,
+        [
+          Validators.required,
+          Validators.minLength(3),
+          FormValidations.equalTo('senha'),
+        ],
+      ],
       aceitarTermos: [null, [Validators.requiredTrue]],
     });
 
