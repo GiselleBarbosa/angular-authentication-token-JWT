@@ -41,6 +41,7 @@ import { PerfilComponent } from './pages/perfil/perfil.component';
 import { PromocoesComponent } from './pages/home/promocoes/promocoes.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SeletorPassageiroComponent } from './shared/seletor-passageiro/seletor-passageiro.component';
+import { BuscaComponent } from './pages/busca/busca.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { SeletorPassageiroComponent } from './shared/seletor-passageiro/seletor-
     FormBaseComponent,
     CadastroComponent,
     PerfilComponent,
+    BuscaComponent,
   ],
   imports: [
     BrowserModule,
